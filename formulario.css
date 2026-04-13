@@ -1,0 +1,96 @@
+/* Paleta de colores Campero */
+:root {
+    --naranja: #F37021;
+    --amarillo: #FFC20E;
+    --rojo: #E30613;
+    --gris: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-top: 8px solid var(--naranja);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: var(--naranja);
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--gris);
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Importante para el ancho */
+}
+
+input:focus {
+    border-color: var(--amarillo);
+    outline: none;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.btn-enviar {
+    background-color: var(--naranja);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: var(--rojo);
+}
+
+.ticket {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff9e6;
+    border: 2px dashed var(--amarillo);
+    border-radius: 8px;
+    color: #555;
+}
