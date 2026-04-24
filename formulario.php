@@ -40,6 +40,11 @@
             </div>
 
             <div class="form-group">
+                <label for="monto">Monto a cobrar:</label>
+                <input type="number" id="monto" name="monto" step="0.01" required placeholder="0.00">
+            </div>
+
+            <div class="form-group">
                 <label for="notas">Notas Especiales:</label>
                 <textarea id="notas" name="notas" rows="3" placeholder="Ej. Sin ensalada, mucha salsa..."></textarea>
             </div>
@@ -52,16 +57,43 @@
             $nombre = $_POST['nombre'];
             $menu = $_POST['menu'];
             $tipo = $_POST['tipo'];
+            $montoOriginal = floatval($_POST['monto']);
+            $descuento = 0;
+            $porcentaje = 0;
+
+            // Lógica de validación de descuentos
+            if ($montoOriginal > 300 && $montoOriginal < 500) {
+                $porcentaje = 42;
+            } elseif ($montoOriginal > 80 && $montoOriginal < 200) {
+                $porcentaje = 25;
+            } elseif ($montoOriginal > 30) {
+                $porcentaje = 10;
+            }
+
+            if ($porcentaje > 0) {
+                $descuento = $montoOriginal * ($porcentaje / 100);
+            }
+            $montoFinal = $montoOriginal - $descuento;
 
             echo "<div class='ticket'>";
             echo "<h3>✅ Pedido Recibido</h3>";
             echo "<p><strong>Cliente:</strong> $nombre</p>";
             echo "<p><strong>Pedido:</strong> $menu ($tipo)</p>";
+            echo "<hr>";
+            echo "<p><strong>Monto Original:</strong> Q" . number_format($montoOriginal, 2) . "</p>";
+            
+            if ($porcentaje > 0) {
+                echo "<p style='color: green;'><strong>Descuento Aplicado ($porcentaje%):</strong> -Q" . number_format($descuento, 2) . "</p>";
+            } else {
+                echo "<p><em>No aplica descuento.</em></p>";
+            }
+
+            echo "<h4><strong>Total a Pagar: Q" . number_format($montoFinal, 2) . "</strong></h4>";
             echo "<p><em>¡En un momento estará listo!</em></p>";
             echo "</div>";
         }
         ?>
-   <script src="script.js"></script> 
-   </div>
+        <script src="script.js"></script> 
+    </div>
 </body>
 </html>
